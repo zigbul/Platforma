@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(InputHandler), typeof(Jumper))]
 public class PlayerMovement : MonoBehaviour
 {
-    private const string Horizontal = nameof(Horizontal);
-
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private Animator _animator;
     [SerializeField] private InputHandler _inputHandler;
