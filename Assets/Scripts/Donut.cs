@@ -1,12 +1,9 @@
 using UnityEngine;
 
-public class Donut : MonoBehaviour
+public class Donut : MonoBehaviour, Collectable
 {
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Collect()
     {
-        if (collision.TryGetComponent(out PlayerMovement _))
-        {
-            Destroy(gameObject);
-        }
+        gameObject.SetActive(false);
     }
 }

@@ -9,24 +9,9 @@ public class EnemyMovement : MonoBehaviour
 
     [SerializeField] private float _speed = 4f;
     [SerializeField] private float _distanceToTarget = 0.1f;
-    [SerializeField] private bool _isMoving = true;
 
     private int _currentIndex = 0;
     private Vector2 _direction;
-
-    public bool IsMoving
-    {
-        get 
-        { 
-            return _isMoving; 
-        }
-
-        private set
-        {
-            _isMoving = value;
-            _animator.SetBool(nameof(IsMoving), value);
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -46,11 +31,16 @@ public class EnemyMovement : MonoBehaviour
             ChangeTargetIndex();
         }
 
-        IsMoving = true;
+        SetupAnimatorIsMoving(true);
     }
 
     private void ChangeTargetIndex()
     {
         _currentIndex = ++_currentIndex % _waypoints.Length;
+    }
+
+    private void SetupAnimatorIsMoving(bool isMoving)
+    {
+        _animator.SetBool(EnemyAnimatorData.Params.IsMoving, isMoving);
     }
 }
