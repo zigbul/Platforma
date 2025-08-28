@@ -3216,7 +3216,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85, y: -2.45, z: -10}
+  m_LocalPosition: {x: -1.98, y: -11.36, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3445,6 +3445,7 @@ GameObject:
   - component: {fileID: 1099291260}
   - component: {fileID: 1099291259}
   - component: {fileID: 1099291258}
+  - component: {fileID: 1099291262}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -3580,7 +3581,7 @@ Transform:
   m_GameObject: {fileID: 1099291249}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85, y: -2.45, z: 0}
+  m_LocalPosition: {x: -1.98, y: -11.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3621,8 +3622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1099291251}
-  _animator: {fileID: 1099291254}
-  _inputHandler: {fileID: 1099291260}
   _moveSpeed: 5
 --- !u!114 &1099291256
 MonoBehaviour:
@@ -3680,8 +3679,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1099291251}
-  _inputHandler: {fileID: 1099291260}
-  _groundChecker: {fileID: 1099291258}
   _jumpForce: 10
 --- !u!114 &1099291260
 MonoBehaviour:
@@ -3707,12 +3704,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef377509d1a8aa44eb725fbad4d251df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerMovement: {fileID: 1099291255}
-  _flipper: {fileID: 1099291256}
-  _collectablePicker: {fileID: 1099291257}
+  _movement: {fileID: 1099291255}
+  _spriteFlipper: {fileID: 0}
   _inputHandler: {fileID: 1099291260}
   _jumper: {fileID: 1099291259}
   _groundChecker: {fileID: 1099291258}
+  _animator: {fileID: 1099291262}
+--- !u!114 &1099291262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099291249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d328299e62513b41bc3bb3088651cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1099291254}
 --- !u!1 &1194195468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,7 +3771,9 @@ GameObject:
   - component: {fileID: 1273366678}
   - component: {fileID: 1273366685}
   - component: {fileID: 1273366682}
+  - component: {fileID: 1273366687}
   - component: {fileID: 1273366684}
+  - component: {fileID: 1273366686}
   - component: {fileID: 1273366683}
   m_Layer: 7
   m_Name: Enemy
@@ -3916,13 +3928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f9e37f8898cdf419bbac9767ccc5a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 1273366678}
-  _animator: {fileID: 1273366683}
-  _waypoints:
-  - {fileID: 1546988707}
-  - {fileID: 36094183}
+  _rigidbody: {fileID: 1273366678}
   _speed: 4
-  _distanceToTarget: 0.7
 --- !u!95 &1273366683
 Animator:
   serializedVersion: 7
@@ -3971,7 +3978,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54ce0284b1ee8f04aabe2ed6797829c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movement: {fileID: 0}
+  _movement: {fileID: 1273366682}
+  _spriteFlipper: {fileID: 1273366684}
+  _patroller: {fileID: 1273366687}
+  _animator: {fileID: 1273366686}
+--- !u!114 &1273366686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273366677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520bdbf5fbd5e884db2a64529bf5d3d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 1273366683}
+--- !u!114 &1273366687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273366677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea4a386b265a264d82da5f68e99c1bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waypoints:
+  - {fileID: 1546988707}
+  - {fileID: 36094183}
+  _distanceToTarget: 0.1
 --- !u!1001 &1337144310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6408,7 +6447,7 @@ Transform:
   m_GameObject: {fileID: 2023041337}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85, y: -2.45, z: -10}
+  m_LocalPosition: {x: -1.98, y: -11.36, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6665,13 +6704,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1121465117827952405, guid: 2e4c4d22953daec45b853448aa0d5790, type: 3}
+      propertyPath: _isFacingRight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5418441582861851694, guid: 2e4c4d22953daec45b853448aa0d5790, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.85
+      value: -1.98
       objectReference: {fileID: 0}
     - target: {fileID: 5418441582861851694, guid: 2e4c4d22953daec45b853448aa0d5790, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.45
+      value: -11.36
       objectReference: {fileID: 0}
     - target: {fileID: 5418441582861851694, guid: 2e4c4d22953daec45b853448aa0d5790, type: 3}
       propertyPath: m_LocalPosition.z

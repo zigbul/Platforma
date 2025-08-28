@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Donut : MonoBehaviour, Collectable
+public class Donut : MonoBehaviour, ICollectable
 {
     public void Collect()
     {

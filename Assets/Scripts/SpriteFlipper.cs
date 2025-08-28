@@ -10,12 +10,7 @@ public class SpriteFlipper : MonoBehaviour
     private float _facingRightRotation = 0f;
     private float _facingLeftRotation = 180f;
 
-    private void FixedUpdate()
-    {
-        Flip();
-    }
-
-    private void Flip()
+    public void Flip()
     {
         if (_rigidbody.linearVelocity.x > _flipThreshold && _isFacingRight == false)
         {
