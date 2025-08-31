@@ -7,19 +7,21 @@ public class Patroller : MonoBehaviour
 
     private int _currentIndex = 0;
 
-    public Vector2 GetDirection(Vector2 currentPosition)
+    public float GetHorizontalDirection()
     {
         if (_waypoints.Length == 0)
-            return Vector2.zero;
+            return Vector2.zero.x;
 
         Vector2 targetPosition = _waypoints[_currentIndex].position;
-        Vector2 direction = targetPosition - currentPosition;
+        Vector2 direction = targetPosition - (Vector2)transform.position;
 
         if (direction.sqrMagnitude <= _distanceToTarget * _distanceToTarget)
         {
             _currentIndex = ++_currentIndex % _waypoints.Length;
         }
 
-        return direction;
+        direction.Normalize();
+
+        return direction.x;
     }
 }

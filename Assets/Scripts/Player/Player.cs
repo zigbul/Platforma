@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement), typeof(SpriteFlipper), typeof(PlayerAnimator))]
+[RequireComponent(typeof(Mover), typeof(SpriteFlipper), typeof(PlayerAnimator))]
 [RequireComponent(typeof(InputHandler), typeof(Jumper), typeof(GroundChecker))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private PlayerMovement _movement;
+    [SerializeField] private Mover _mover;
     [SerializeField] private SpriteFlipper _spriteFlipper;
     [SerializeField] private InputHandler _inputHandler;
     [SerializeField] private Jumper _jumper;
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _movement = GetComponent<PlayerMovement>();
+        _mover = GetComponent<Mover>();
         _spriteFlipper = GetComponent<SpriteFlipper>();
         _inputHandler = GetComponent<InputHandler>();
         _jumper = GetComponent<Jumper>();
@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     {
         if (_inputHandler.HorizontalInput != Vector2.zero.x)
         {
-            _movement.Move(_inputHandler.HorizontalInput);
+            _mover.Move(_inputHandler.HorizontalInput);
             _animator.SetIsMoving(true);
         }
         else
