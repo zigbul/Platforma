@@ -1,4 +1,4 @@
 public interface ICollectable
 {
-    void Collect();
+    void Collect(Health player);
 }

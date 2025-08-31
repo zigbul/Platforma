@@ -22,6 +22,11 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Heal(int health)
+    {
+        _currentHealth = Mathf.Min(_currentHealth +  health, _maxHealth);
+    }
+
     private void Die()
     {
         gameObject.SetActive(false);

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Donut : MonoBehaviour, ICollectable
 {
-    public void Collect()
+    public void Collect(Health health)
     {
         gameObject.SetActive(false);
     }

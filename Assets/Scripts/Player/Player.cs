@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Mover), typeof(SpriteFlipper), typeof(PlayerAnimator))]
 [RequireComponent(typeof(InputHandler), typeof(Jumper), typeof(GroundChecker))]
+[RequireComponent(typeof(Damager))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private Mover _mover;
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Jumper _jumper;
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _animator;
+    [SerializeField] private Damager _damager;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
         _jumper = GetComponent<Jumper>();
         _groundChecker = GetComponent<GroundChecker>();
         _animator = GetComponent<PlayerAnimator>();
+        _damager = GetComponent<Damager>();
     }
 
     private void FixedUpdate()
@@ -31,6 +34,12 @@ public class Player : MonoBehaviour
         else
         {
             _animator.SetIsMoving(false);
+        }
+
+        if (_damager.CanAttack)
+        {
+            _damager.Attack();
+            _animator.SetIsAttacking();
         }
     }
 

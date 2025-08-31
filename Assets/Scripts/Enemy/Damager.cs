@@ -9,35 +9,35 @@ public class Damager : MonoBehaviour
     [Header("Set Dynamically")]
     [SerializeField] private float lastAttackTime;
     [SerializeField] private bool _canAttack;
-    [SerializeField] private Health _player;
+    [SerializeField] private Health _target;
 
     public bool CanAttack => _canAttack && Time.time > lastAttackTime + _cooldown;
 
-    public void CanAttackTarget(Health player)
+    public void CanAttackTarget(Health target)
     {
-        Vector2 direction = player.transform.position - transform.position;
+        Vector2 direction = target.transform.position - transform.position;
 
         if (direction.sqrMagnitude <= _attackRange * _attackRange)
         {
             _canAttack = true;
-            _player = player;
+            _target = target;
         }
         else
         {
             _canAttack = false;
-            _player = null;
+            _target = null;
         }
     }
 
     public void Attack()
     {
-        if (_player.CurrentHealth <= 0)
+        if (_target.CurrentHealth <= 0)
         {
             _canAttack = false;
             return;
         }
 
         lastAttackTime = Time.time;
-        _player.TakeDamage(_damage);
+        _target.TakeDamage(_damage);
     }
 }
