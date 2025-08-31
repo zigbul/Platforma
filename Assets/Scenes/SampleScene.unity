@@ -3446,6 +3446,7 @@ GameObject:
   - component: {fileID: 1099291259}
   - component: {fileID: 1099291258}
   - component: {fileID: 1099291262}
+  - component: {fileID: 1099291264}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -3723,6 +3724,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1099291251}
   _moveSpeed: 5
+--- !u!114 &1099291264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099291249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3823845f46f5d17479a7b3f61c292498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
+  _currentHealth: 0
 --- !u!1 &1194195468
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,6 +3793,8 @@ GameObject:
   - component: {fileID: 1273366683}
   - component: {fileID: 1273366690}
   - component: {fileID: 1273366692}
+  - component: {fileID: 1273366693}
+  - component: {fileID: 1273366694}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -3971,7 +3988,8 @@ MonoBehaviour:
   _spriteFlipper: {fileID: 1273366684}
   _patroller: {fileID: 1273366687}
   _animator: {fileID: 1273366686}
-  _chaser: {fileID: 0}
+  _chaser: {fileID: 1273366690}
+  _damager: {fileID: 1273366694}
 --- !u!114 &1273366686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4028,7 +4046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isChasing: 0
-  _player: {fileID: 0}
+  _player: {fileID: 1099291261}
 --- !u!61 &1273366691
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4088,6 +4106,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _chaser: {fileID: 1273366690}
+  _damager: {fileID: 1273366694}
+--- !u!114 &1273366693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273366677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3823845f46f5d17479a7b3f61c292498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
+  _currentHealth: 0
+--- !u!114 &1273366694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273366677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6fe89850afbfc438d475048ab6a82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 2
+  _cooldown: 1
+  _attackRange: 1.5
+  lastAttackTime: 0
+  _canAttack: 0
+  _player: {fileID: 0}
 --- !u!1001 &1337144310
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,4 +13,9 @@ public class EnemyAnimator : MonoBehaviour
     {
         _animator.SetBool(EnemyAnimatorData.Params.IsMoving, isMoving);
     }
+
+    public void SetAnimatorIsAttacking()
+    {
+        _animator.SetTrigger(EnemyAnimatorData.Params.IsAttacking);
+    }
 }
