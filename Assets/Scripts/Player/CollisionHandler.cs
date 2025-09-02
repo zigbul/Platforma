@@ -2,24 +2,29 @@ using UnityEngine;
 
 public class CollisionHandler : MonoBehaviour
 {
-    [SerializeField] private Health _health;
+    [SerializeField] private Donut _donut;
+    [SerializeField] private Potion _potion;
 
-    private void Awake()
-    {
-        _health = GetComponent<Health>();
-    }
+    public Donut Donut => _donut;
+
+    public Potion Potion => _potion;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.TryGetComponent(out ICollectable donut))
+        if (collision.collider.TryGetComponent(out Donut donut))
         {
-            donut.Collect(_health);
+            _donut = donut;
         }
 
-        if (collision.collider.TryGetComponent(out ICollectable potion))
+        if (collision.collider.TryGetComponent(out Potion potion))
         {
-            potion.Collect(_health);
-            
+            _potion = potion;
         }
+    }
+
+    public void RemoveItems()
+    {
+        _donut = null;
+        _potion = null;
     }
 }

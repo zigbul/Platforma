@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Mover), typeof(SpriteFlipper), typeof(Patroller))]
 [RequireComponent(typeof(EnemyAnimator), typeof(Chaser), typeof(Damager))]
+[RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Mover _mover;
@@ -10,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyAnimator _animator;
     [SerializeField] private Chaser _chaser;
     [SerializeField] private Damager _damager;
+    [SerializeField] private Health _health;
 
     private void Awake()
     {
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour
         _animator = GetComponent<EnemyAnimator>();
         _chaser = GetComponent<Chaser>();
         _damager = GetComponent<Damager>();
+        _health = GetComponent<Health>();
     }
 
     private void FixedUpdate()
@@ -53,6 +56,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (_health.Current <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
         _spriteFlipper.Flip();
     }
 }

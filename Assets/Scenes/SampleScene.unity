@@ -3651,6 +3651,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f6fe89850afbfc438d475048ab6a82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1099291266 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6634939000655272773, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
+  m_PrefabInstance: {fileID: 8482880788855051791}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d033e898907a9584bbcc499ae0c88170, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1180240195 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8375019990052179515, guid: 28c14cdf778247b4d85a5d9fdc51e27b, type: 3}
@@ -6097,6 +6108,7 @@ GameObject:
   - component: {fileID: 1868998199}
   - component: {fileID: 1868998198}
   - component: {fileID: 1868998197}
+  - component: {fileID: 1868998201}
   m_Layer: 0
   m_Name: Potion
   m_TagString: Untagged
@@ -6233,6 +6245,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868998201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868998196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3823845f46f5d17479a7b3f61c292498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _max: 10
+  _current: 0
 --- !u!4 &1925720879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8375019990052179515, guid: 28c14cdf778247b4d85a5d9fdc51e27b, type: 3}
@@ -6675,9 +6701,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 579937664285263359, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 1099291264}
+    - target: {fileID: 579937664285263359, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
       propertyPath: _damager
       value: 
       objectReference: {fileID: 1099291265}
+    - target: {fileID: 579937664285263359, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
+      propertyPath: _collisionHandler
+      value: 
+      objectReference: {fileID: 1099291266}
     - target: {fileID: 2536065739590233622, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
       propertyPath: m_Size.x
       value: 1.9799807

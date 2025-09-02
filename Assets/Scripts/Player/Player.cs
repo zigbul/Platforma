@@ -1,8 +1,9 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Mover), typeof(SpriteFlipper), typeof(PlayerAnimator))]
 [RequireComponent(typeof(InputHandler), typeof(Jumper), typeof(GroundChecker))]
-[RequireComponent(typeof(Damager))]
+[RequireComponent(typeof(Damager), typeof(CollisionHandler), typeof(Health))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private Mover _mover;
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private Damager _damager;
+    [SerializeField] private CollisionHandler _collisionHandler;
+    [SerializeField] private Health _health;
 
     private void Awake()
     {
@@ -22,6 +25,8 @@ public class Player : MonoBehaviour
         _groundChecker = GetComponent<GroundChecker>();
         _animator = GetComponent<PlayerAnimator>();
         _damager = GetComponent<Damager>();
+        _collisionHandler = GetComponent<CollisionHandler>();
+        _health = GetComponent<Health>();
     }
 
     private void FixedUpdate()
@@ -45,11 +50,29 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (_health.Current <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
         _spriteFlipper.Flip();
 
-        if (_inputHandler.JumpPressed && _groundChecker.CheckIsGrounded())
+        if (_inputHandler.JumpPressed && _groundChecker.IsGrounded())
         {
             _jumper.Jump();
         }
+
+        if (_collisionHandler.Donut != null)
+        {
+            _collisionHandler.Donut.Collect();
+        }
+
+        if (_collisionHandler.Potion != null)
+        {
+            int healthToRestore = _collisionHandler.Potion.GetHealthToRestore();
+            _health.TakeHealth(healthToRestore);
+        }
+
+        _collisionHandler.RemoveItems();
     }
 }

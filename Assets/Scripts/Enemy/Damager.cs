@@ -31,7 +31,7 @@ public class Damager : MonoBehaviour
 
     public void Attack()
     {
-        if (_target.CurrentHealth <= 0)
+        if (_target.Current <= 0)
         {
             _canAttack = false;
             return;

@@ -8,7 +8,7 @@ public class GroundChecker : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
     [SerializeField] private float _extraHeight = 0.1f;
 
-    public bool CheckIsGrounded()
+    public bool IsGrounded()
     {
         Bounds bounds = _collider.bounds;
         float rotationAngle = 0f;

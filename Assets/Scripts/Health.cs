@@ -2,33 +2,23 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHealth = 10;
-    [SerializeField] private int _currentHealth;
+    [SerializeField] private int _max = 10;
+    [SerializeField] private int _current;
 
-    public int CurrentHealth => _currentHealth;
+    public int Current => _current;
 
     private void Start()
     {
-        _currentHealth = _maxHealth;
+        _current = _max;
     }
 
     public void TakeDamage(int damage)
     {
-        _currentHealth -= damage;
-
-        if (_currentHealth <= 0)
-        {
-            Die();
-        }
+        _current -= damage;
     }
 
-    public void Heal(int health)
+    public void TakeHealth(int healthToRestore)
     {
-        _currentHealth = Mathf.Min(_currentHealth +  health, _maxHealth);
-    }
-
-    private void Die()
-    {
-        gameObject.SetActive(false);
+        _current = Mathf.Min(_current + healthToRestore, _max);
     }
 }
