@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Chaser : MonoBehaviour
 {
-    [SerializeField] private bool _isChasing = false;
-    [SerializeField] private Player _player;
+    private bool _isChasing = false;
+    private Vector3 _playerPosition;
 
     public bool IsChasing => _isChasing;
 
@@ -11,13 +11,13 @@ public class Chaser : MonoBehaviour
     {
         get
         {
-            if (_player == null)
+            if (_playerPosition == Vector3.zero)
             {
                 _isChasing = false;
-                return Vector2.zero.x;
+                return Vector3.zero.x;
             }
 
-            Vector2 direction = _player.transform.position - transform.position;
+            Vector3 direction = _playerPosition - transform.position;
             direction.Normalize();
 
             return direction.x;
@@ -27,12 +27,12 @@ public class Chaser : MonoBehaviour
     public void StartChasing(Player player)
     {
         _isChasing = true;
-        _player = player;
+        _playerPosition = player.transform.position;
     }
 
     public void StopChasing()
     {
         _isChasing = false;
-        _player = null;
+        _playerPosition = Vector3.zero;
     }
 }
