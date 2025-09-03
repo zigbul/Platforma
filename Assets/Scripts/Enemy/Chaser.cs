@@ -24,10 +24,10 @@ public class Chaser : MonoBehaviour
         }
     }
 
-    public void StartChasing(Player player)
+    public void StartChasing(Vector3 playerPosition)
     {
         _isChasing = true;
-        _playerPosition = player.transform.position;
+        _playerPosition = playerPosition;
     }
 
     public void StopChasing()

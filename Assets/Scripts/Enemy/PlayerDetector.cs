@@ -9,7 +9,9 @@ public class PlayerDetector : MonoBehaviour
     {
         if (collision.TryGetComponent(out Player player))
         {
-            _chaser.StartChasing(player);
+            Vector3 playerPosition = player.transform.position;
+
+            _chaser.StartChasing(playerPosition);
         }
     }
 
