@@ -14,11 +14,11 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _current -= damage;
+        _current -= Mathf.Abs(damage);
     }
 
     public void TakeHealth(int healthToRestore)
     {
-        _current = Mathf.Min(_current + healthToRestore, _max);
+        _current = Mathf.Min(_current + Mathf.Abs(healthToRestore), _max);
     }
 }
