@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Mover), typeof(SpriteFlipper), typeof(PlayerAnimator))]
 [RequireComponent(typeof(InputHandler), typeof(Jumper), typeof(GroundChecker))]
-[RequireComponent(typeof(Damager), typeof(CollisionHandler), typeof(Health))]
+[RequireComponent(typeof(Damager), typeof(Collector), typeof(Health))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private Mover _mover;
@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private Damager _damager;
-    [SerializeField] private CollisionHandler _collisionHandler;
+    [SerializeField] private Collector _collector;
     [SerializeField] private Health _health;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
         _groundChecker = GetComponent<GroundChecker>();
         _animator = GetComponent<PlayerAnimator>();
         _damager = GetComponent<Damager>();
-        _collisionHandler = GetComponent<CollisionHandler>();
+        _collector = GetComponent<Collector>();
         _health = GetComponent<Health>();
     }
 
@@ -61,17 +61,17 @@ public class Player : MonoBehaviour
             _jumper.Jump();
         }
 
-        if (_collisionHandler.Donut != null)
+        if (_collector.Donut != null)
         {
-            _collisionHandler.Donut.Collect();
+            _collector.Donut.Collect();
         }
 
-        if (_collisionHandler.Potion != null)
+        if (_collector.Potion != null)
         {
-            int healthToRestore = _collisionHandler.Potion.GetHealthToRestore();
+            int healthToRestore = _collector.Potion.GetHealthToRestore();
             _health.TakeHealth(healthToRestore);
         }
 
-        _collisionHandler.RemoveItems();
+        _collector.RemoveItems();
     }
 }

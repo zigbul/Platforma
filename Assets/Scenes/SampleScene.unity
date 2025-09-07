@@ -6518,6 +6518,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1099291265}
     - target: {fileID: 579937664285263359, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
+      propertyPath: _collector
+      value: 
+      objectReference: {fileID: 1099291266}
+    - target: {fileID: 579937664285263359, guid: b4339742129b7f3479d92da61e7ec236, type: 3}
       propertyPath: _collisionHandler
       value: 
       objectReference: {fileID: 1099291266}

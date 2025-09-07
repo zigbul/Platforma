@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CollisionHandler : MonoBehaviour
+public class Collector : MonoBehaviour
 {
     [SerializeField] private Donut _donut;
     [SerializeField] private Potion _potion;
