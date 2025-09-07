@@ -10,19 +10,9 @@ public class SpriteFlipper : MonoBehaviour
     private float _facingRightRotation = 0f;
     private float _facingLeftRotation = 180f;
 
-    public void Flip()
-    {
-        if (_rigidbody.linearVelocity.x > _flipThreshold && _isFacingRight == false)
-        {
-            FlipSprite();
-        }
-        else if (_rigidbody.linearVelocity.x < -_flipThreshold && _isFacingRight)
-        {
-            FlipSprite();
-        }
-    }
+    public bool CanFlip => TryFlip();
 
-    private void FlipSprite()
+    public void FlipSprite()
     {
         _isFacingRight = !_isFacingRight;
 
@@ -33,5 +23,19 @@ public class SpriteFlipper : MonoBehaviour
             : _facingLeftRotation;
 
         transform.eulerAngles = rotation;
+    }
+
+    private bool TryFlip()
+    {
+        if (_rigidbody.linearVelocity.x > _flipThreshold && _isFacingRight == false)
+        {
+            return true;
+        }
+        else if (_rigidbody.linearVelocity.x < -_flipThreshold && _isFacingRight)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -61,6 +61,9 @@ public class Enemy : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        _spriteFlipper.Flip();
+        if (_spriteFlipper.CanFlip)
+        {
+            _spriteFlipper.FlipSprite();
+        }
     }
 }

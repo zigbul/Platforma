@@ -54,7 +54,10 @@ public class Player : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        _spriteFlipper.Flip();
+        if (_spriteFlipper.CanFlip)
+        {
+            _spriteFlipper.FlipSprite();
+        }
 
         if (_inputHandler.JumpPressed && _groundChecker.IsGrounded())
         {
