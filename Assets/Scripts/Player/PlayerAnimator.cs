@@ -10,9 +10,14 @@ public class PlayerAnimator : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void SetIsMoving(bool isMoving)
+    public void ActivateMovingAnimation()
     {
-        _animator.SetBool(PlayerAnimatorData.Params.IsMoving, isMoving);
+        _animator.SetBool(PlayerAnimatorData.Params.IsMoving, true);
+    }
+
+    public void DeactivateMovingAnimation()
+    {
+        _animator.SetBool(PlayerAnimatorData.Params.IsMoving, false);
     }
 
     public void SetIsAttacking()

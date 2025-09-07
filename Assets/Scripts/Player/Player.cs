@@ -33,11 +33,11 @@ public class Player : MonoBehaviour
         if (_inputHandler.HorizontalInput != Vector2.zero.x)
         {
             _mover.Move(_inputHandler.HorizontalInput);
-            _animator.SetIsMoving(true);
+            _animator.ActivateMovingAnimation();
         }
         else
         {
-            _animator.SetIsMoving(false);
+            _animator.DeactivateMovingAnimation();
         }
 
         if (_damager.CanAttack)

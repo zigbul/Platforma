@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private int _max = 10;
-    [SerializeField] private int _min = -1;
+    [SerializeField] private int _min = 0;
     [SerializeField] private int _current;
 
     public int Current => _current;
