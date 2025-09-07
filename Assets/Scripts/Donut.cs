@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 
 public class Donut : MonoBehaviour, ICollectable
 {
+    public event Action<Donut> OnReturnToPool;
+
     public void Collect()
     {
-        gameObject.SetActive(false);
+        OnReturnToPool?.Invoke(this);
     }
 }

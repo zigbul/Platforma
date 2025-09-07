@@ -4,14 +4,13 @@ public class Potion : MonoBehaviour, ICollectable
 {
     [SerializeField] private int _healthToRestore = 5;
 
-    public int GetHealthToRestore()
+    public void Collect()
     {
-        Deactivate();
-        return _healthToRestore;
     }
 
-    private void Deactivate()
+    public int GetHealthToRestore()
     {
-        gameObject.SetActive(false);
-    }
+        Collect();
+        return _healthToRestore;
+    }    
 }
