@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -14,11 +15,22 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _current -= Mathf.Abs(damage);
+        if (IsPositive(damage))
+        {
+            _current -= damage;
+        }
     }
 
     public void TakeHealth(int healthToRestore)
     {
-        _current = Mathf.Min(_current + Mathf.Abs(healthToRestore), _max);
+        if (IsPositive(healthToRestore))
+        {
+            _current = Mathf.Min(_current + healthToRestore, _max);
+        }
+    }
+
+    private bool IsPositive(int value)
+    {
+        return Mathf.Sign(value) > 0;
     }
 }
