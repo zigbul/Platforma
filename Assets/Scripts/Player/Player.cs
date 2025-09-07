@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
             _animator.DeactivateMovingAnimation();
         }
 
+        if (_inputHandler.JumpPressed && _groundChecker.IsGrounded())
+        {
+            _jumper.Jump();
+        }
+
         if (_damager.CanAttack)
         {
             _damager.Attack();
@@ -57,11 +62,6 @@ public class Player : MonoBehaviour
         if (_spriteFlipper.CanFlip)
         {
             _spriteFlipper.FlipSprite();
-        }
-
-        if (_inputHandler.JumpPressed && _groundChecker.IsGrounded())
-        {
-            _jumper.Jump();
         }
 
         if (_collector.Potion != null)
