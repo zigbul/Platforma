@@ -12,8 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private Damager _damager;
-    [SerializeField] private Collector _collector;
     [SerializeField] private Health _health;
+    [SerializeField] private Collector _collector;
 
     private void Awake()
     {
@@ -24,8 +24,8 @@ public class Player : MonoBehaviour
         _groundChecker = GetComponent<GroundChecker>();
         _animator = GetComponent<PlayerAnimator>();
         _damager = GetComponent<Damager>();
-        _collector = GetComponent<Collector>();
         _health = GetComponent<Health>();
+        _collector = GetComponent<Collector>();
     }
 
     private void FixedUpdate()
@@ -61,17 +61,10 @@ public class Player : MonoBehaviour
             _jumper.Jump();
         }
 
-        if (_collector.Donut != null)
-        {
-            _collector.Donut.Collect();
-        }
-
         if (_collector.Potion != null)
         {
-            int healthToRestore = _collector.Potion.GetHealthToRestore();
-            _health.TakeHealth(healthToRestore);
+            _health.TakeHealth(_collector.Potion.HealthRestore);
+            _collector.Potion.Collect();
         }
-
-        _collector.RemoveItems();
     }
 }

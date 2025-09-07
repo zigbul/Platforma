@@ -2,10 +2,7 @@ using UnityEngine;
 
 public class Collector : MonoBehaviour
 {
-    [SerializeField] private Donut _donut;
-    [SerializeField] private Potion _potion;
-
-    public Donut Donut => _donut;
+    private Potion _potion;
 
     public Potion Potion => _potion;
 
@@ -13,18 +10,20 @@ public class Collector : MonoBehaviour
     {
         if (collision.collider.TryGetComponent(out Donut donut))
         {
-            _donut = donut;
+            donut.Collect();
         }
 
         if (collision.collider.TryGetComponent(out Potion potion))
         {
             _potion = potion;
+            _potion.OnCollect += RemovePotion;
         }
     }
 
-    public void RemoveItems()
+    private void RemovePotion()
     {
-        _donut = null;
+        _potion.OnCollect -= RemovePotion;
+        _potion.gameObject.SetActive(false);
         _potion = null;
     }
 }
